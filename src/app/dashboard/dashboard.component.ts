@@ -15,11 +15,10 @@ export class DashboardComponent {
   paginatedItems: Movie[] = [];
 
   currentPage = 1;
-  itemsPerPage = 10;                 // mặc định 5x10
+  itemsPerPage = 10;
   totalPages = 1;
 
   ngOnInit() {
-    // fetch movieItemList từ API hoặc service
     this.movieItemList = moviesData as Movie[];
     this.updatePagination();
     window.addEventListener('resize', this.handleResize);

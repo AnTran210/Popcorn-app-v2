@@ -9,7 +9,11 @@
       "sources": [
         {
           "episode": 1,
-          "url": "https://example.com/movies/condor_hero_full.mp4"
+          "url": "https://www.youtube.com/embed/Mb0D-phgirI?si=wPKHMxrxFUT5fSAl"
+        },
+        {
+          "episode": 2,
+          "url": "https://www.youtube.com/embed/Mb0D-phgirI?si=wPKHMxrxFUT5fSAl"
         }
       ]
     },
@@ -18,8 +22,8 @@
       "title": "Cosmic Odyssey",
       "genres": ["Sci-Fi", "Adventure"],
       "type": "Movie",
-      "posterUrl": "https://example.com/posters/cosmic_odyssey.jpg",
-      "backgroundUrl": "https://example.com/backgrounds/cosmic_odyssey_bg.jpg",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/17/Cosmic_Odyssey_TPB_Cover.jpg",
+      "backgroundUrl": "https://i0.wp.com/www.comicsbeat.com/wp-content/uploads/2022/12/Cosmic-Odyssey-DC-Comics-Copy.jpg?fit=1125%2C534&ssl=1",
       "sources": [
         {
           "episode": 1,
@@ -32,8 +36,8 @@
       "title": "Whispers in the Dark",
       "genres": ["Thriller", "Horror"],
       "type": "Movie",
-      "posterUrl": "https://example.com/posters/whispers.jpg",
-      "backgroundUrl": "https://example.com/backgrounds/whispers_bg.jpg",
+      "posterUrl": "https://m.media-amazon.com/images/M/MV5BYjc0MzFkZmMtNDg2MS00Y2ViLThmYmItZTkyZTUxZjUzNTYzXkEyXkFqcGc@._V1_.jpg",
+      "backgroundUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2262890/7a382c7cd9d5186e49bffb75652a4bae3abf6571/capsule_616x353.jpg?t=1729984781",
       "sources": [
         {
           "episode": 1,

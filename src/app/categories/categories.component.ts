@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent {
-
+  ngOnInit() {
+    alert("hehe");
+  }
 }
