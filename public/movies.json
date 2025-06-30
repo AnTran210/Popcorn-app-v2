@@ -3,17 +3,25 @@
       "id": "mv001",
       "title": "The Condor Hero 2014",
       "genres": ["Fantasy", "Action", "Drama"],
-      "type": "Movie",
+      "type": "TV Show",
       "posterUrl": "https://photo.znews.vn/w660/Uploaded/wobvjju/2014_11_25/704_1485041_905338.jpg",
       "backgroundUrl": "https://photo.znews.vn/w660/Uploaded/wobvjju/2014_11_25/704_1485040_210444.jpg",
       "sources": [
         {
           "episode": 1,
-          "url": "https://www.youtube.com/embed/Mb0D-phgirI?si=wPKHMxrxFUT5fSAl"
+          "url": "https://www.youtube.com/embed/EPpb3MHG0w4?si=_qwquapjJUnNUMFV"
         },
         {
           "episode": 2,
-          "url": "https://www.youtube.com/embed/Mb0D-phgirI?si=wPKHMxrxFUT5fSAl"
+          "url": "https://www.youtube.com/embed/jr48CsgFmjo?si=h2xNCoZHcZrKpXY4"
+        },
+        {
+          "episode": 3,
+          "url": "https://www.youtube.com/embed/CA91g8VmAV4?si=-Hisq1QZXjtpdbwa"
+        },
+        {
+          "episode": 4,
+          "url": "https://www.youtube.com/embed/mXsac9_PUjY?si=1AX0Wtu8K7J8ZD8B"
         }
       ]
     },
@@ -27,7 +35,7 @@
       "sources": [
         {
           "episode": 1,
-          "url": "https://example.com/movies/cosmic_odyssey_full.mp4"
+          "url": "https://www.youtube.com/embed/EcsRL87Uwmw?si=L52MNOFb_Ylz4I12"
         }
       ]
     },
@@ -41,21 +49,33 @@
       "sources": [
         {
           "episode": 1,
-          "url": "https://example.com/movies/whispers_full.mp4"
+          "url": "https://www.youtube.com/embed/6uiK4yxdR8g?si=24NFuWJmG_9ovxzq"
         }
       ]
     },
     {
       "id": "mv004",
-      "title": "Ancient Echoes",
-      "genres": ["Adventure", "Mystery"],
-      "type": "Movie",
-      "posterUrl": "https://example.com/posters/ancient_echoes.jpg",
-      "backgroundUrl": "https://example.com/backgrounds/ancient_echoes_bg.jpg",
+      "title": "Doraemon TV Series",
+      "genres": ["Comedy", "Animation"],
+      "type": "TV Show",
+      "posterUrl": "https://m.media-amazon.com/images/M/MV5BNTRjMDA5ZTQtNWVkMy00OTAwLWI2NmMtYjQxYWM4MTIxYWFhXkEyXkFqcGc@._V1_.jpg",
+      "backgroundUrl": "https://cdn.oneesports.gg/cdn-data/2023/07/Anime_Doraemon_Wallpaper.jpg",
       "sources": [
         {
           "episode": 1,
-          "url": "https://example.com/movies/ancient_echoes_full.mp4"
+          "url": "https://www.youtube.com/embed/n7ZpTN1bw1g?si=aFjVUyd7etYyYNIn"
+        },
+        {
+          "episode": 2,
+          "url": "https://www.youtube.com/embed/yE2wDnmO8D4?si=jzBQkaHid6G1j4t6"
+        },
+        {
+          "episode": 3,
+          "url": "https://www.youtube.com/embed/ej4lHZZnFNQ?si=rUktWFfXitSt0u-J"
+        },
+        {
+          "episode": 4,
+          "url": "https://www.youtube.com/embed/WutTkSWpp_s?si=a8NQ6iP8Wo6txoOg"
         }
       ]
     },
