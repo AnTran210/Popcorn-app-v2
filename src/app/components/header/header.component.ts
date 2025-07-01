@@ -11,19 +11,34 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
   isLoggedIn = false;
-  userName = 'John Doe';
 
   searchForm = new FormGroup({
     searchQuery: new FormControl(''),
   })
 
+  ngOnInit(): void {
+    this.checkLoginStatus();
+  }
+
+  checkLoginStatus(): void {
+    const username = localStorage.getItem('username');
+    
+    if (username) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
+  }
+
   login() {
     // your login logic
+    localStorage.setItem('username', 'Alice');
     this.isLoggedIn = true;
   }
 
   logout() {
     // your logout logic
+    localStorage.removeItem('username');
     this.isLoggedIn = false;
   }
 
