@@ -1,0 +1,94 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+        max-width: 1200px;
+        background-color: var(--color-bg);
+        padding: 1rem;
+        gap: 0.5rem;
+        color: var(--color-text-primary);
+
+        .section-title {
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .pages {
+            button {
+                background-color: transparent;
+                /* Nền trong suốt hoặc màu xám rất nhạt */
+                color: #ffffff;
+                /* Màu chữ trắng */
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                /* Đường viền mờ màu trắng */
+                padding: 8px 12px;
+                /* Kích thước nút */
+                margin: 0 5px;
+                /* Khoảng cách giữa các nút */
+                border-radius: 4px;
+                /* Bo tròn góc nhẹ */
+                cursor: pointer;
+                /* Biểu tượng con trỏ khi di chuột qua */
+                font-size: 1em;
+                /* Kích thước chữ */
+                transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+                /* Hiệu ứng chuyển đổi mượt mà */
+                min-width: 40px;
+                /* Đảm bảo nút có chiều rộng tối thiểu */
+                text-align: center;
+                /* Căn giữa số trang */
+                font-weight: 500;
+                /* Độ đậm của chữ */
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                    /* Nền hơi sáng hơn khi hover */
+                    border-color: rgba(255, 255, 255, 0.5);
+                    /* Đường viền rõ hơn khi hover */
+                    color: #ffd700;
+                    /* Màu vàng nhẹ để làm nổi bật (tùy chọn) */
+                }
+
+                &.active {
+                    /* Style cho nút trang hiện tại */
+                    background-color: #e50914;
+                    /* Màu đỏ nổi bật giống nút Login hoặc màu theme chính */
+                    border-color: #e50914;
+                    color: #ffffff;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            background-color: var(--color-surface);
+
+            .grid {
+                width: 100%;
+                max-width: 1100px;
+                display: grid;
+                gap: 1rem;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                align-items: center;
+                justify-content: space-around;
+                padding: 1rem;
+            }
+        }
+    }
+}

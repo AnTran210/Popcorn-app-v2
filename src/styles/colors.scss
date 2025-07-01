@@ -1,8 +1,8 @@
 :root {
     /* === Base === */
-    --color-bg:         oklch(7% 0 0);            /* Đen "true black" */
-    --color-header:     oklch(16% 0 20);      /* Đen hơi pha đỏ cam (header/nav) */
-    --color-surface:    oklch(20% 0 20);       /* Nền khối nổi nhẹ */
+    --color-bg:         oklch(6% 0 0);            /* Đen "true black" */
+    --color-header:     oklch(18% 0 20);      /* Đen hơi pha đỏ cam (header/nav) */
+    --color-surface:    oklch(25% 0 20);       /* Nền khối nổi nhẹ */
   
     /* === Text === */
     --color-text-primary:   oklch(90% 0.005 20);  /* Trắng hơi ấm (đỡ gắt) */
@@ -11,7 +11,9 @@
   
     /* === Accent === */
     --color-accent:     oklch(62% 0.28 25);       /* Đỏ rực Netflix */
-    --color-accent-hover: color-mix(in srgb, var(--color-accent) 80%, var(--color-bg));
+    --color-accent-contrast: oklch(85% 0.25 90);
+    --color-accent-hover: color-mix(in srgb, var(--color-accent) 70%, var(--color-bg));
+    --color-accent-contrast-hover: color-mix(in srgb, var(--color-accent-contrast) 70%, var(--color-bg));
   
     /* === Borders/Effects === */
     --color-border-soft: oklch(25% 0.01 20);      /* Viền mềm nhẹ */
