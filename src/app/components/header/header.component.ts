@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { Subscription } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -12,27 +12,16 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  isLoggedIn = false;
+  private userService = inject(UserService);
+  private router = inject(Router);
+
+  user = this.userService.currentUser;
 
   searchForm = new FormGroup({
     searchQuery: new FormControl(''),
   })
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-    this.checkLoginStatus();
-  }
-
-  checkLoginStatus(): void {
-    const username = localStorage.getItem('username');
-    
-    if (username) {
-      this.isLoggedIn = true;
-    } else {
-      this.isLoggedIn = false;
-    }
-  }
+  constructor() { }
 
   login() {
     this.router.navigate(['/login']);
@@ -40,11 +29,11 @@ export class HeaderComponent {
 
   logout() {
     // your logout logic
-    localStorage.removeItem('username');
-    this.isLoggedIn = false;
+    this.userService.clearUser();
   }
 
   handleSearch() {
-    alert(this.searchForm.value.searchQuery);
+    //alert(this.searchForm.value.searchQuery);
+    alert(localStorage.getItem('username') + "---" + this.user()?.username)
   }
 }

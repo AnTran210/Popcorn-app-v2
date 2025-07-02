@@ -18,9 +18,9 @@
         </div>
 
         <!-- Auth Section -->
-        @if (isLoggedIn) {
+        @if (user()) {
         <div class="user-menu">
-            <span class="username">User123</span>
+            <span class="username">{{user()?.username}}</span>
             <button (click)="logout()">Logout</button>
         </div>
         } @else {

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  private userService = inject(UserService);
+
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -19,8 +22,8 @@ export class LoginComponent {
 
   login() {
     if (this.loginForm.value.username !== undefined && this.loginForm.value.username !== '') {
-      localStorage.setItem('username', this.loginForm.value.username ?? '');
-      this.router.navigate(['/tv-shows']);
+      this.userService.setUser(String(this.loginForm.value.username), String(this.loginForm.value.password))
+      this.router.navigate(['/dashboard']);
     }
     
   }
