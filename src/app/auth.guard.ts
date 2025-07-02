@@ -16,14 +16,9 @@ export class AuthGuard implements CanActivate {
     const username = localStorage.getItem('username');
 
     if (username !== null && username !== '') {
-      // Người dùng đã đăng nhập, cho phép truy cập route
       return true;
     } else {
-      // Người dùng chưa đăng nhập, chuyển hướng về trang login
-      console.warn('Bạn chưa đăng nhập. Đang chuyển hướng về trang đăng nhập.');
-      return this.router.createUrlTree(['/login']); // Điều hướng về route '/login'
-      // Hoặc: return this.router.navigate(['/login']); và sau đó return false;
-      // Tuy nhiên, trả về UrlTree trực tiếp là cách được khuyến khích hơn trong Angular 7+
+      return this.router.createUrlTree(['/login']);
     }
   }
 }

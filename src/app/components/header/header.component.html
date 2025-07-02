@@ -18,13 +18,13 @@
         </div>
 
         <!-- Auth Section -->
-        @if (!isLoggedIn) {
-        <button class="login-btn" (click)="login()">Login</button>
-        } @else {
+        @if (isLoggedIn) {
         <div class="user-menu">
             <span class="username">User123</span>
             <button (click)="logout()">Logout</button>
         </div>
+        } @else {
+        <button class="login-btn" (click)="login()">Login</button>
         }
     </div>
 </header>

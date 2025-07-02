@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +17,8 @@ export class HeaderComponent {
   searchForm = new FormGroup({
     searchQuery: new FormControl(''),
   })
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.checkLoginStatus();
@@ -31,9 +35,7 @@ export class HeaderComponent {
   }
 
   login() {
-    // your login logic
-    localStorage.setItem('username', 'Alice');
-    this.isLoggedIn = true;
+    this.router.navigate(['/login']);
   }
 
   logout() {

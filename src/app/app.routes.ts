@@ -7,15 +7,18 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
-    { 
+    {
         path: 'login',
         component: LoginComponent,
     },
     {
         path: '',
-        component: DashboardComponent,
-        title: 'Dashboard',
-        canActivate: [AuthGuard],
+        redirectTo: '/dashboard',
+        pathMatch: 'full',
+    },
+    { 
+        path: 'dashboard', 
+        component: DashboardComponent 
     },
     {
         path: 'categories',
@@ -35,8 +38,8 @@ export const routes: Routes = [
         title: 'TV Shows',
         canActivate: [AuthGuard],
     },
-    { 
+    {
         path: '**',
-        redirectTo: '/login' 
-    }
+        redirectTo: '/dashboard',
+    },
 ];
