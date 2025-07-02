@@ -30,10 +30,10 @@ export class HeaderComponent {
   logout() {
     // your logout logic
     this.userService.clearUser();
+    this.router.navigate(['']);
   }
 
   handleSearch() {
-    //alert(this.searchForm.value.searchQuery);
-    alert(localStorage.getItem('username') + "---" + this.user()?.username)
+    alert(this.searchForm.value.searchQuery);
   }
 }

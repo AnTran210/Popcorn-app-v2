@@ -1,12 +1,13 @@
 <main>
     <div class="container">
         <div class="content">
-            <h2>Most views</h2>
-            <div class="list">
-                @for (item of movieItemList; track $index) {
+            <button (click)="prev()" [disabled]="startIndex === 0">&lt;</button>
+            <div id="trending" class="grid">
+                @for (item of visibleItems; track $index) {
                 <app-movie-item [movie]="item"></app-movie-item>
                 }
             </div>
+            <button (click)="next()" [disabled]="startIndex + visibleCount >= movieItemList.length">&gt;</button>
         </div>
     </div>
 </main>

@@ -12,13 +12,14 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent {
   private userService = inject(UserService);
+  private router = inject(Router);
 
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   })
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   login() {
     if (this.loginForm.value.username !== undefined && this.loginForm.value.username !== '') {

@@ -17,4 +17,24 @@ export class DashboardComponent {
   ngOnInit() {
     this.movieItemList = this.movieService.getAllMovies();
   }
+
+  startIndex = 0;
+  visibleCount = 6;
+
+  get visibleItems() {
+    return this.movieItemList.slice(this.startIndex, this.startIndex + this.visibleCount);
+  }
+
+  next() {
+    if (this.startIndex + this.visibleCount < this.movieItemList.length) {
+      this.startIndex+=this.visibleCount;
+      alert(String(document.getElementById('trending')?.style.getPropertyValue("max-width")));
+    }
+  }
+
+  prev() {
+    if (this.startIndex > 0) {
+      this.startIndex-=this.visibleCount;
+    }
+  }
 }
