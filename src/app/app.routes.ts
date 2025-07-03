@@ -5,6 +5,7 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './components/login/login.component';
+import { MoviesComponent } from './movies/movies.component';
 
 export const routes: Routes = [
     {
@@ -36,6 +37,12 @@ export const routes: Routes = [
         path: 'tv-shows',
         component: TvShowsComponent,
         title: 'TV Shows',
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'movies',
+        component: MoviesComponent,
+        title: 'Movies',
         canActivate: [AuthGuard],
     },
     {

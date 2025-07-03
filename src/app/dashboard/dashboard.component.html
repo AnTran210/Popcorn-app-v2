@@ -1,13 +1,33 @@
 <main>
+    <div class="greeting">
+        <p class="greeting-text">Unlimited films, series and more</p>
+        <div class="input-email">
+            <input type="email" placeholder="Email address">
+            <button>Get Started</button>
+        </div>
+    </div>
     <div class="container">
+        <div class="section-title">
+            <h2>Trending</h2>
+        </div>
         <div class="content">
-            <button (click)="prev()" [disabled]="startIndex === 0">&lt;</button>
-            <div id="trending" class="grid">
-                @for (item of visibleItems; track $index) {
+            <div class="trending">
+                @for (item of movieItemList; track $index) {
                 <app-movie-item [movie]="item"></app-movie-item>
                 }
             </div>
-            <button (click)="next()" [disabled]="startIndex + visibleCount >= movieItemList.length">&gt;</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section-title">
+            <h2>Most View</h2>
+        </div>
+        <div class="content">
+            <div class="trending">
+                @for (item of movieItemList; track $index) {
+                <app-movie-item [movie]="item"></app-movie-item>
+                }
+            </div>
         </div>
     </div>
 </main>
