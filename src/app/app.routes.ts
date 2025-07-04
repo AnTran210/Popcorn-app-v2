@@ -6,6 +6,7 @@ import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { MoviesComponent } from './movies/movies.component';
+import { WatchMovieComponent } from './components/watch-movie/watch-movie.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,12 @@ export const routes: Routes = [
         path: 'movieDetail/:id',
         component: MovieDetailComponent,
         title: 'Movie Detail',
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'watchMovie/:id',
+        component: WatchMovieComponent,
+        title: 'Wath Movie',
         canActivate: [AuthGuard],
     },
     {

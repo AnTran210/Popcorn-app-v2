@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDetailService } from '../../services/movie-detail.service';
 import { Movie } from '../../models/movie.model';
+import { RouterLink } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie-detail',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './movie-detail.component.html',
   styleUrl: './movie-detail.component.scss'
 })

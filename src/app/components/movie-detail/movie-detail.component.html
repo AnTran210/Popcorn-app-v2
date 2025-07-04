@@ -1,10 +1,39 @@
 <main>
-    <div class="container wallpaper" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{movie?.backgroundUrl}}');">
-        <p>sjkafasujfhsajfgjhsagf</p>
+    <div class="wallpaper"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{movie?.backgroundUrl}}');">
+        <div class="thumbnail">
+            <img [src]="movie?.posterUrl" alt="">
+        </div>
+        <div class="detail">
+            <h2>{{movie?.title}}</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque asperiores veritatis repellat aspernatur
+                at? Consequatur, ex quis blanditiis odio magni magnam, tenetur accusantium vero excepturi rem est labore
+                porro sint!</p>
+            <button [routerLink]="['/watchMovie', movie?.id]">Watch</button>
+        </div>
+
     </div>
     <div class="container">
-        <iframe class="player" [src]="safeUrl" title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </div>
+    <div class="container">
+        <div class="content" style="flex: 2;">
+            <div class="star-rating">
+                @for (item of [].constructor(5).keys(); track item) {
+                <button id="rate-{{item}}" class="rating-star filled">
+                    <svg class="star-icon" viewBox="0 0 100 100">
+                        <path
+                            d="M 50,0 L 61.8,35.3 L 97.6,35.3 L 69.1,57.7 L 79.4,92.7 L 50,70.7 L 20.6,92.7 L 30.9,57.7 L 2.4,35.3 L 38.2,35.3 Z" />
+                    </svg>
+                </button>
+                }
+            </div>
+            <textarea class="comment" placeholder="Comment here..." oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight + 10) + 'px';"></textarea>
+        </div>
+        <div class="content" style="flex: 1;">
+            <iframe class="player" [src]="safeUrl" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </div>
 </main>
