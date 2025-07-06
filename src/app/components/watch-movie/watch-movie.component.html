@@ -1,1 +1,16 @@
-<p>watch-movie works!</p>
+<main>
+    <div class="container">
+        <iframe class="player" [src]="safeUrl" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="container">
+        <div class="content">
+            @for (ep of movie?.sources; track $index) {
+            <button (click)="goToEp(ep.episode)" [class.active]="currentEp === ep.episode">
+                {{ ep.episode }}
+            </button>
+            }
+        </div>
+    </div>
+</main>

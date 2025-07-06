@@ -1,2 +1,11 @@
-<p>categories works!</p>
-<p>add something</p>
+<main>
+    <div class="container">
+        <div class="content">
+            <div class="grid">
+                @for (item of categories; track $index) {
+                <a class="category-tag" href="">{{item}}</a>
+                }
+            </div>
+        </div>
+    </div>
+</main>

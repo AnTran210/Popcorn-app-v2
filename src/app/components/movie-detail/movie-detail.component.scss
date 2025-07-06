@@ -55,9 +55,9 @@ main {
                 border-radius: 0.25rem;
                 background-color: var(--color-accent);
                 color: var(--color-text-primary);
-                cursor: pointer;
 
                 &:hover {
+                    cursor: pointer;
                     background-color: var(--color-accent-hover);
                 }
             }
@@ -122,11 +122,39 @@ main {
             }
 
             .comment {
+                display: flex;
+                align-items: start;
+                justify-content: space-between;
                 width: 90%;
-                height: 50px;
-                font-size: 1rem;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 padding: 0.25rem;
+                gap: 0.5rem;
+                resize: none;
+
+                .comment-content {
+                    flex: 1;
+                    border-radius: 0.25rem;
+                    font-size: 1rem;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    padding: 0.25rem;
+                    resize: none;
+                }
+
+                button {
+                    font-size: 1rem;
+                    font-weight: bold;
+                    width: 4rem;
+                    padding: 0.3rem;
+                    border: none;
+                    border-radius: 0.25rem;
+                    background-color:dodgerblue;
+                    color: var(--color-text-primary);
+                    
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: darkslateblue;
+                    }
+                }
             }
         }
     }

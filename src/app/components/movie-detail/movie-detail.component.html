@@ -14,9 +14,6 @@
 
     </div>
     <div class="container">
-
-    </div>
-    <div class="container">
         <div class="content" style="flex: 2;">
             <div class="star-rating">
                 @for (item of [].constructor(5).keys(); track item) {
@@ -28,12 +25,17 @@
                 </button>
                 }
             </div>
-            <textarea class="comment" placeholder="Comment here..." oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight + 10) + 'px';"></textarea>
+            <div class="comment">
+                <textarea class="comment-content" placeholder="Comment here..."
+                    oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight + 2) + 'px';"></textarea>
+                <button>Send</button>
+            </div>
+
         </div>
-        <div class="content" style="flex: 1;">
-            <iframe class="player" [src]="safeUrl" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="content" style="flex: 1; align-items: flex-start;">
+            <h2>Related movies</h2>
+            <hr style="border-top: 1px solid #ddd; width: 90%;" />
+            <a href="">Movie 1</a>
         </div>
     </div>
 </main>
