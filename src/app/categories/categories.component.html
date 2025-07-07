@@ -3,7 +3,7 @@
         <div class="content">
             <div class="grid">
                 @for (item of categories; track $index) {
-                <a class="category-tag" href="">{{item}}</a>
+                <a class="category-tag" [routerLink]="['/filter', item]">{{item}}</a>
                 }
             </div>
         </div>

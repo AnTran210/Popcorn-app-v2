@@ -7,9 +7,16 @@
     <div class="container">
         <div class="content">
             @for (ep of movie?.sources; track $index) {
+            @if (movie?.type == 'Movie') {
+            <button (click)="goToEp(ep.episode)" [class.active]="currentEp === ep.episode">
+                Full
+            </button>
+            }
+            @else {
             <button (click)="goToEp(ep.episode)" [class.active]="currentEp === ep.episode">
                 {{ ep.episode }}
             </button>
+            }
             }
         </div>
     </div>

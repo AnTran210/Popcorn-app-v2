@@ -9,21 +9,31 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   selector: 'app-movie-detail',
   imports: [RouterLink],
   templateUrl: './movie-detail.component.html',
-  styleUrl: './movie-detail.component.scss'
+  styleUrl: './movie-detail.component.scss',
 })
 export class MovieDetailComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   movieService = inject(MovieDetailService);
   movie: Movie | undefined;
+  relatedMovies: Movie[] = [];
   safeUrl!: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
     const movieId = String(this.route.snapshot.params['id']);
     this.movie = this.movieService.getMovieById(movieId);
+    this.relatedMovies = this.movieService.getAllMovies();
   }
 
   ngOnInit() {
     const url = String(this.movie?.sources[0].url);
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    this.relatedMovies = this.relatedMovies.filter((related) => {
+      if (related.id === this.movie?.id) {
+        return false;
+      }
+      return related.genres.some((genre) =>
+        this.movie?.genres.includes(genre)
+      );
+    });
   }
 }

@@ -7,6 +7,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { MoviesComponent } from './movies/movies.component';
 import { WatchMovieComponent } from './components/watch-movie/watch-movie.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 export const routes: Routes = [
     {
@@ -38,6 +39,12 @@ export const routes: Routes = [
         path: 'watchMovie/:id',
         component: WatchMovieComponent,
         title: 'Wath Movie',
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'filter/:category',
+        component: FilterComponent,
+        title: 'Filter',
         canActivate: [AuthGuard],
     },
     {

@@ -156,6 +156,16 @@ main {
                     }
                 }
             }
+
+            .related {
+                color: var(--color-text-primary);
+                font-weight: 500;
+
+                &:hover {
+                    color: var(--color-accent);
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
