@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieDetailService } from '../../services/movie-detail.service';
 import { Movie } from '../../models/movie.model';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -13,10 +14,12 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class MovieDetailComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
-  movieService = inject(MovieDetailService);
+  private movieService = inject(MovieDetailService);
+  private router = inject(Router);
   movie: Movie | undefined;
   relatedMovies: Movie[] = [];
   safeUrl!: SafeResourceUrl;
+  
 
   constructor(private sanitizer: DomSanitizer) {
     const movieId = String(this.route.snapshot.params['id']);
@@ -35,5 +38,9 @@ export class MovieDetailComponent {
         this.movie?.genres.includes(genre)
       );
     });
+  }
+
+  gotoOther(str : String) {
+    this.router.navigate(['/movieDetail', str]);
   }
 }

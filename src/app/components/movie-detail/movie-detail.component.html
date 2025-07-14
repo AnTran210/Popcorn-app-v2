@@ -36,7 +36,7 @@
             <h2>Related movies</h2>
             <hr style="border-top: 1px solid #ddd; width: 90%;" />
             @for (related of relatedMovies; track $index) {
-                <a class="related" href="">{{related.title}}</a>
+                <p class="related" (click)="gotoOther(related.id)">{{related.title}}</p>
             }
         </div>
     </div>
