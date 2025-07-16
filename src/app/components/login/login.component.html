@@ -1,9 +1,21 @@
-<div class="container" [formGroup]="loginForm">
-    <h2 class="login-title">LOGIN</h2>
-    <input id="username" type="text" placeholder="Username" formControlName="username"/>
-    <input id="password" type="password" placeholder="Password" formControlName="password"/>
-    <div class="button-choice">
-        <button class="login-btn" (click)="login()">Login</button>
-        <button class="register-btn">Register</button>
-    </div>
-</div>
+<app-header></app-header>
+<main>
+    <form class="container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2 class="login-title">LOGIN</h2>
+        <input  id="username"
+                type="text" 
+                placeholder="Username"
+                [class.input-error]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+                formControlName="username"/>
+        <input  id="password" 
+                type="password" 
+                formControlName="password"
+                [class.input-error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                placeholder="Password"/>
+        <div class="button-choice">
+            <button type="button" class="login-btn" (click)="login()">Login</button>
+            <button type="submit" class="register-btn">Register</button>
+        </div>
+    </form>
+</main>
+

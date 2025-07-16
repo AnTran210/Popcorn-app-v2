@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { MovieItemComponent } from '../components/movie-item/movie-item.component';
 import { Movie } from '../models/movie.model';
 import { MovieDetailService } from '../services/movie-detail.service';
+import { HeaderComponent } from '../components/header/header.component';
 
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [MovieItemComponent],
+  imports: [HeaderComponent, MovieItemComponent],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss'
 })

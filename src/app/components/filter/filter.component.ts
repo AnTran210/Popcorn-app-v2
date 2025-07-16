@@ -3,10 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieDetailService } from '../../services/movie-detail.service';
 import { Movie, Genre } from '../../models/movie.model';
 import { MovieItemComponent } from '../movie-item/movie-item.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-filter',
-  imports: [MovieItemComponent],
+  imports: [HeaderComponent, MovieItemComponent],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss'
 })
