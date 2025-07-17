@@ -20,7 +20,7 @@
         <!-- Auth Section -->
         @if (user()) {
         <div class="user-menu">
-            <span class="username">{{user()?.username}}</span>
+            <span class="username">{{user()}}</span>
             <button (click)="logout()">Logout</button>
         </div>
         } @else {

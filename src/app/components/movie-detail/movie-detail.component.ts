@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDetailService } from '../../services/movie-detail.service';
 import { Movie } from '../../models/movie.model';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,29 +16,32 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class MovieDetailComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   private movieService = inject(MovieDetailService);
+  private sanitizer = inject(DomSanitizer);
   private router = inject(Router);
   movie: Movie | undefined;
-  relatedMovies: Movie[] = [];
+  relatedMovies = signal<Movie[]>([]);
   safeUrl!: SafeResourceUrl;
   
 
-  constructor(private sanitizer: DomSanitizer) {
-    const movieId = String(this.route.snapshot.params['id']);
-    this.movie = this.movieService.getMovieById(movieId);
-    this.relatedMovies = this.movieService.getAllMovies();
+  constructor() {
+    
   }
 
   ngOnInit() {
-    const url = String(this.movie?.sources[0].url);
-    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    this.relatedMovies = this.relatedMovies.filter((related) => {
-      if (related.id === this.movie?.id) {
-        return false;
-      }
-      return related.genres.some((genre) =>
-        this.movie?.genres.includes(genre)
-      );
-    });
+    const movieId = String(this.route.snapshot.params['id']);
+    this.movie = this.movieService.getMovieById(movieId);
+    this.movieService.getAllMovies()
+    .pipe(
+      catchError((err) => {
+        console.log(err);
+        throw err;
+      })
+    )
+    .subscribe((movies) => {
+      this.relatedMovies.set(movies);
+    })
+    const vidUrl = String(this.movie?.sources[0].url);
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(vidUrl);
   }
 
   gotoOther(str : String) {

@@ -9,17 +9,17 @@ export type Genre =
     'Drama' |
     'Family' |
     'Fantasy' |
-    'Film Noir' |
+    'FilmNoir' |
     'History' |
     'Horror' |
     'Music' |
     'Mystery' |
     'Romance' |
-    'Sci-Fi' |
+    'SciFi' |
     'Sport' |
     'Thriller' |
     'War';
-export type MovieType = 'TV Show' | 'Movie';
+export type MovieType = 'TVShow' | 'Movie';
 
 export interface Source {
     episode: number;

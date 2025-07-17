@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MovieItemComponent } from '../components/movie-item/movie-item.component';
 import { Movie } from '../models/movie.model';
 import { MovieDetailService } from '../services/movie-detail.service';
 import { HeaderComponent } from '../components/header/header.component';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +14,18 @@ import { HeaderComponent } from '../components/header/header.component';
 })
 export class DashboardComponent {
   movieService = inject(MovieDetailService);
-  movieItemList: Movie[] = [];
+  movieItemList = signal<Movie[]>([]);
 
   ngOnInit() {
-    this.movieItemList = this.movieService.getAllMovies();
+    this.movieService.getAllMovies()
+    .pipe(
+      catchError((err) => {
+        console.log(err);
+        throw err;
+      })
+    )
+    .subscribe((movies) => {
+      this.movieItemList.set(movies);
+    })
   }
 }

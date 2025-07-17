@@ -5,19 +5,20 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { HeaderComponent } from '../header/header.component';
+import { catchError } from 'rxjs';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [HeaderComponent, ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss',
 })
-export class LoginComponent {
+export class RegisterComponent {
   private userService = inject(UserService);
   private router = inject(Router);
 
@@ -47,6 +48,10 @@ export class LoginComponent {
   }
 
   login() {
+    this.router.navigate(['/login']);
+  }
+
+  register() {
     if (this.loginForm.invalid) {
       if (this.loginForm.get('username')?.invalid) {
         alert("Username can't be empty.");
@@ -64,27 +69,20 @@ export class LoginComponent {
         ? this.loginForm.value.password
         : '',
     };
-    this.userService.userLogin(user).subscribe({
+    this.userService.userRegister(user).subscribe({
       next: (response) => {
         console.log('✅ Success (200):', response);
-        this.userService.setUser(user.username);
+        this.userService.setUser(user.username)
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         console.error('❌ Error:', error);
 
-        if (error.status === 400) {
-          console.warn('Bad Request (400):', error.error);
-          alert(error.error.message)
-        } else if (error.status === 404) {
-          console.warn('Not Found (404):', error.message);
+        if (error.status === 409) {
+          console.warn('⚠️ Conflict (409):', error.error);
           alert(error.error.message)
         }
-      },
+      }
     });
-  }
-
-  register() {
-    this.router.navigate(['/register']);
   }
 }

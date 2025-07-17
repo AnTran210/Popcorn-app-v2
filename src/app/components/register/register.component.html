@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main>
     <form class="container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <h2 class="login-title">LOGIN</h2>
+        <h2 class="login-title">REGISTER</h2>
         <input  id="username"
                 type="text" 
                 placeholder="Username"
@@ -13,9 +13,9 @@
                 [class.input-error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
                 placeholder="Password"/>
         <div class="button-choice">
-            <button type="submit" class="login-btn" (click)="login()">Login</button>
+            <button type="submit" class="register-btn" (click)="register()">Register</button>
             <span class="divider">--------Or--------</span>
-            <button type="button" class="register-btn" (click)="register()">Register</button>
+            <button type="button" class="login-btn" (click)="login()">Login</button>
         </div>
     </form>
 </main>

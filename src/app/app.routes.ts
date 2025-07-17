@@ -8,11 +8,16 @@ import { LoginComponent } from './components/login/login.component';
 import { MoviesComponent } from './movies/movies.component';
 import { WatchMovieComponent } from './components/watch-movie/watch-movie.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+    },
+    {
+        path: 'register',
+        component: RegisterComponent,
     },
     {
         path: '',

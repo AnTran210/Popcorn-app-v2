@@ -1,37 +1,55 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { User } from '../models/user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private _currentUser = signal<User | null>(null);
+  http = inject(HttpClient);
+  PopcornApi_HostAddress = "https://localhost:7194";
+  private _currentUser = signal<string | null>(null);
 
   constructor() {
     const username = localStorage.getItem('username');
-    const password = localStorage.getItem('password');
 
-    if (username && password) {
-      this._currentUser = signal({ username, password });
+    if (username) {
+      this._currentUser = signal( username );
     } else {
       this._currentUser = signal(null);
     }
   }
 
-  get currentUser(): WritableSignal<User | null> {
+  userRegister(user: User) {
+    const url = `${this.PopcornApi_HostAddress}/api/user/register`;
+    const payload = {
+      username: user.username,
+      password: user.password
+    };
+    return this.http.post(url, payload);
+  }
+
+  userLogin(user: User) {
+    const url = `${this.PopcornApi_HostAddress}/api/user/login`;
+    const payload = {
+      username: user.username,
+      password: user.password
+    };
+    return this.http.post(url, payload);
+  }
+
+  get currentUser(): WritableSignal<string | null> {
     return this._currentUser;
   }
 
-  setUser(username: string, password: string): void {
+  setUser(username: string): void {
     localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
     
-    this._currentUser.set({ username, password });
+    this._currentUser.set( username );
   }
 
   clearUser(): void {
     localStorage.removeItem('username');
-    localStorage.removeItem('password');
     
     this._currentUser.set(null);
   }
