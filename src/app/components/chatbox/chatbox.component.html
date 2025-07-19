@@ -1,0 +1,15 @@
+<div class="box-header">
+    <p>Chatbot</p>
+    <button (click)="Visibility()">{{isHidden?"Show":"Hide"}}</button>
+</div>
+@if (!this.isHidden) {
+<div class="conversation">
+    @for (item of chats; track $index) {
+    <textarea class="chat-content" readonly>{{item}}</textarea>
+    }
+</div>
+<div class="chat-container" [formGroup]="chatForm">
+    <input class="chat-input" type="text" placeholder="Chat here..." formControlName="chatQuery"
+        (keyup.enter)="handleChat()">
+</div>
+}

@@ -28,7 +28,7 @@ export class MovieDetailService {
   }
 
   getMovieById(id: String) {
-    return this.movieList.find(movie => 
-      movie.id === id);
+    const url = `${this.PopcornApi_HostAddress}/api/movie/${id}`;
+    return this.http.get<Movie>(url);
   }
 }

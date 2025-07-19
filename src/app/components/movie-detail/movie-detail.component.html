@@ -1,15 +1,15 @@
 <main>
     <div class="wallpaper"
-        style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{movie?.backgroundUrl}}');">
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{movie().backgroundUrl}}');">
         <div class="thumbnail">
-            <img [src]="movie?.posterUrl" alt="">
+            <img [src]="movie().posterUrl" alt="">
         </div>
         <div class="detail">
-            <h2>{{movie?.title}}</h2>
+            <h2>{{movie().title}}</h2>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque asperiores veritatis repellat aspernatur
                 at? Consequatur, ex quis blanditiis odio magni magnam, tenetur accusantium vero excepturi rem est labore
                 porro sint!</p>
-            <button [routerLink]="['/watchMovie', movie?.id]">Watch</button>
+            <button [routerLink]="['/watchMovie', movie().id]">Watch</button>
         </div>
 
     </div>

@@ -18,7 +18,23 @@ export class MovieDetailComponent {
   private movieService = inject(MovieDetailService);
   private sanitizer = inject(DomSanitizer);
   private router = inject(Router);
-  movie: Movie | undefined;
+  movie = signal<Movie>({
+    "id": "mv022",
+    "title": "The Serpent's Coil",
+    "genres": [
+      "Thriller",
+      "Crime"
+    ],
+    "type": "Movie",
+    "posterUrl": "https://example.com/posters/serpents_coil.jpg",
+    "backgroundUrl": "https://example.com/backgrounds/serpents_coil_bg.jpg",
+    "sources": [
+      {
+        "episode": 1,
+        "url": "https://example.com/movies/serpents_coil_full.mp4"
+      }
+    ]
+  });
   relatedMovies = signal<Movie[]>([]);
   safeUrl!: SafeResourceUrl;
   
@@ -29,7 +45,16 @@ export class MovieDetailComponent {
 
   ngOnInit() {
     const movieId = String(this.route.snapshot.params['id']);
-    this.movie = this.movieService.getMovieById(movieId);
+    this.movieService.getMovieById(movieId)
+    .pipe(
+      catchError((err) => {
+        console.log(err);
+        throw err;
+      })
+    )
+    .subscribe((movie) => {
+      this.movie.set(movie);
+    })
     this.movieService.getAllMovies()
     .pipe(
       catchError((err) => {
@@ -40,7 +65,7 @@ export class MovieDetailComponent {
     .subscribe((movies) => {
       this.relatedMovies.set(movies);
     })
-    const vidUrl = String(this.movie?.sources[0].url);
+    const vidUrl = String(this.movie().sources[0].url);
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(vidUrl);
   }
 

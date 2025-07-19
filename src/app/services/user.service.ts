@@ -1,5 +1,6 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { User } from '../models/user.model';
+import { ResponceModel } from '../models/responce.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -36,6 +37,14 @@ export class UserService {
       password: user.password
     };
     return this.http.post(url, payload);
+  }
+
+  askGemini(prompttext: string) {
+    const url = `${this.PopcornApi_HostAddress}/api/gemini`;
+    const payload = {
+      prompt: prompttext
+    };
+    return this.http.post<ResponceModel>(url, payload);
   }
 
   get currentUser(): WritableSignal<string | null> {

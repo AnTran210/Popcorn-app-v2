@@ -4,11 +4,12 @@ import { Movie } from '../models/movie.model';
 import { MovieDetailService } from '../services/movie-detail.service';
 import { HeaderComponent } from '../components/header/header.component';
 import { catchError } from 'rxjs';
+import { ChatboxComponent } from '../components/chatbox/chatbox.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [HeaderComponent, MovieItemComponent],
+  imports: [HeaderComponent, MovieItemComponent, ChatboxComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
