@@ -8,27 +8,31 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MovieDetailService {
   http = inject(HttpClient);
-  PopcornApi_HostAddress = "https://localhost:7194";
+  PopcornApi_HostAddress = "https://localhost:7114";
   protected movieList: Movie[] = moviesData as Movie[];
   constructor() { }
 
   getAllMovies() {
-    const url = `${this.PopcornApi_HostAddress}/api/movie`;
+    const username = localStorage.getItem('username');
+    const url = `${this.PopcornApi_HostAddress}/api/movie?username=${username}`;
     return this.http.get<Movie[]>(url);
   }
 
   getMoviesByType(type: string) {
-    const url = `${this.PopcornApi_HostAddress}/api/movie/type?query=${type}`;
+    const username = localStorage.getItem('username');
+    const url = `${this.PopcornApi_HostAddress}/api/movie/type?query=${type}&username=${username}`;
     return this.http.get<Movie[]>(url);
   }
 
   getMoviesByGenre(genre: string) {
-    const url = `${this.PopcornApi_HostAddress}/api/movie/genre?query=${genre}`;
+    const username = localStorage.getItem('username');
+    const url = `${this.PopcornApi_HostAddress}/api/movie/genre?query=${genre}&username=${username}`;
     return this.http.get<Movie[]>(url);
   }
 
   getMovieById(id: String) {
-    const url = `${this.PopcornApi_HostAddress}/api/movie/${id}`;
+    const username = localStorage.getItem('username');
+    const url = `${this.PopcornApi_HostAddress}/api/movie/${id}?username=${username}`;
     return this.http.get<Movie>(url);
   }
 }

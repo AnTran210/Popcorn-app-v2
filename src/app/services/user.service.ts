@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   http = inject(HttpClient);
-  PopcornApi_HostAddress = "https://localhost:7194";
+  PopcornApi_HostAddress = "https://localhost:7241";
   private _currentUser = signal<string | null>(null);
 
   constructor() {

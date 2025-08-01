@@ -5,7 +5,7 @@
 @if (!this.isHidden) {
 <div class="conversation">
     @for (item of chats; track $index) {
-    <textarea class="chat-content" readonly>{{item}}</textarea>
+    <p class="chat-content">{{item}}</p>
     }
 </div>
 <div class="chat-container" [formGroup]="chatForm">

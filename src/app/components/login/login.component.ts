@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { HeaderComponent } from '../header/header.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ import { HeaderComponent } from '../header/header.component';
 export class LoginComponent {
   private userService = inject(UserService);
   private router = inject(Router);
+  private formSubscription: Subscription | undefined;
 
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -31,12 +33,12 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      console.log(this.loginForm);
-    } else console.log(this.loginForm.value);
+      console.log("Invalid value");
+    } else console.log("Valid value");
   }
 
   ngOnInit() {
-    this.loginForm.get('username')?.valueChanges.subscribe((value) => {
+    this.formSubscription = this.loginForm.get('username')?.valueChanges.subscribe((value) => {
       if (
         this.loginForm.get('username')?.touched &&
         this.loginForm.get('username')?.invalid
@@ -44,6 +46,13 @@ export class LoginComponent {
         console.log("invalid input - value changes");
       }
     });
+  }
+
+  ngOnDestroy() {
+    if (this.formSubscription) {
+      this.formSubscription.unsubscribe();
+      console.log('Subscription unsubscribed!');
+    }
   }
 
   login() {
