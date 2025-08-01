@@ -1,3 +1,3 @@
 export interface ResponceModel {
-    message: string
+    gemini_response: string
 }

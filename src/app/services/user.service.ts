@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   http = inject(HttpClient);
   PopcornApi_HostAddress = "https://localhost:7241";
+  GeminiChat_Address = "http://127.0.0.1:8000";
   private _currentUser = signal<string | null>(null);
 
   constructor() {
@@ -40,7 +41,7 @@ export class UserService {
   }
 
   askGemini(prompttext: string) {
-    const url = `${this.PopcornApi_HostAddress}/api/gemini`;
+    const url = `${this.GeminiChat_Address}/generate-text/`;
     const payload = {
       prompt: prompttext
     };

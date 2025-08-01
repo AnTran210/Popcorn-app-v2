@@ -28,7 +28,7 @@ export class ChatboxComponent {
     this.userService.askGemini(this.chatForm.value.chatQuery??"").subscribe({
       next: (response: ResponceModel) => {
         console.log('✅ Success (200):', response);
-        this.chats.push("Gemini: " + response.message);
+        this.chats.push("Gemini: " + response.gemini_response);
       },
       error: (error) => {
         console.error('❌ Error:', error);
