@@ -6,10 +6,11 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { catchError } from 'rxjs';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-movie-detail',
-  imports: [RouterLink],
+  imports: [RouterLink, HeaderComponent],
   templateUrl: './movie-detail.component.html',
   styleUrl: './movie-detail.component.scss',
 })

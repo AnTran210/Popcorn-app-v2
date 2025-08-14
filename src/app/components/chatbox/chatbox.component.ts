@@ -32,6 +32,7 @@ export class ChatboxComponent {
       },
       error: (error) => {
         console.error('❌ Error:', error);
+        this.chats.push("Gemini: Unexpected error occurred.");
 
         if (error.status === 400) {
           console.warn('Bad Request (400):', error.error);

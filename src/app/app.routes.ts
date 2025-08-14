@@ -9,8 +9,13 @@ import { MoviesComponent } from './movies/movies.component';
 import { WatchMovieComponent } from './components/watch-movie/watch-movie.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 
 export const routes: Routes = [
+    {
+        path: 'adminpage',
+        component: AdminpageComponent,
+    },
     {
         path: 'login',
         component: LoginComponent,
