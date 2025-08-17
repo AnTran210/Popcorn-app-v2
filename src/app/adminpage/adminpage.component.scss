@@ -3,6 +3,89 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1em;
     background-color: var(--color-bg);
     color: var(--color-text-primary);
+
+    .create {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+        background-color: var(--color-surface);
+        color: var(--color-text-primary);
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 0.5em;
+        }
+
+        .form-genres {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            align-items: center;
+            justify-content: space-around;
+            padding: 1rem;
+
+            .category-tag {
+                padding-inline: 0.5rem;
+                border-radius: 0.25rem;
+                font-size: 1.3rem;
+                font-weight: 500;
+                text-decoration: none;
+                color: var(--color-text-primary);
+
+                &:hover {
+                    cursor: pointer;
+                    color: var(--color-accent);
+                    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('https://png.pngtree.com/background/20230520/original/pngtree-popcorn-hd-wallpapers-picture-image_2676293.jpg');
+                    background-size: cover;
+                    background-position: center center;
+                }
+            }
+        }
+
+        .fieldname {
+            font-size: 1em;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        input {
+            border: none;
+            border-radius: 0.25em;
+        }
+
+        button {
+            background-color: var(--color-accent);
+            border: none;
+            width: 100;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--color-accent-hover);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+    }
 }

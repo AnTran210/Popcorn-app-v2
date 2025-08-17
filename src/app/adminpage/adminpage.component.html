@@ -4,30 +4,32 @@
             <div class="form-section">
                 <h2>Add a new movie</h2>
                 <div class="form-group">
-                    <label for="id">ID:</label>
+                    <label for="id" class="fieldname">ID</label>
                     <input type="text" id="id" formControlName="id" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="title">Title:</label>
+                    <label for="title" class="fieldname">Title</label>
                     <input type="text" id="title" formControlName="title" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label>Genres:</label>
-                    @for (category of categories; track $index) {
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [id]="'category-' + category" [value]="category"
-                            (change)="onCategoryChange($event)">
-                        <label class="form-check-label" [for]="'category-' + category">
-                            {{ category }}
-                        </label>
+                    <label class="fieldname">Genres</label>
+                    <div class="form-genres">
+                        @for (category of categories; track $index) {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" [id]="'category-' + category"
+                                [value]="category" (change)="onCategoryChange($event)">
+                            <label class="form-check-label" [for]="'category-' + category">
+                                {{ category }}
+                            </label>
+                        </div>
+                        }
                     </div>
-                    }
                 </div>
 
                 <div class="form-group">
-                    <label for="type">Type:</label>
+                    <label for="type" class="fieldname">Type</label>
                     <select id="type" formControlName="type" class="form-control">
                         <option value="" disabled selected>Select...</option>
                         <option value="Movie">Movie</option>
@@ -36,12 +38,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="poster">Tải lên Poster:</label>
+                    <label for="poster" class="fieldname">Poster</label>
                     <input type="file" id="poster" (change)="onFileChange($event, 'poster')" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="background">Tải lên Ảnh nền:</label>
+                    <label for="background" class="fieldname">Background</label>
                     <input type="file" id="background" (change)="onFileChange($event, 'background')"
                         class="form-control">
                 </div>
@@ -59,16 +61,19 @@
                     <label for="url-{{$index}}">URL:</label>
                     <input type="text" [id]="'url-' + $index" formControlName="url" class="form-control">
 
-                    <button type="button" (click)="removeSource($index)" class="btn btn-danger">Xóa</button>
+                    <button type="button" (click)="removeSource($index)" class="btn-del">Delete</button>
                 </div>
                 }
-                <button type="button" (click)="addSource()" class="btn btn-primary">Thêm nguồn phim</button>
+                <div>
+                    <button type="button" (click)="addSource()" class="btn-add-source">Add source</button>
+                </div>
             </div>
 
             <hr>
 
-            <button type="submit" [disabled]="movieForm.invalid" class="btn btn-success">Add movie</button>
-            <!--  -->
+            <div>
+                <button type="submit" [disabled]="movieForm.invalid" class="btn-submit">Add movie</button>
+            </div>
         </form>
     </section>
 </main>
